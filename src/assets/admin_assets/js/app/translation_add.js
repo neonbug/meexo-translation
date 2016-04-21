@@ -107,6 +107,13 @@
 					}
 				}
 			});
+			
+			// if current textarea's value is an HTML string, turn WYSIWYG editor on by default
+			if (/<[a-z][\s\S]*>/i.test($('textarea', el).val()))
+			{
+				$('[type="checkbox"]', el).prop('checked', true);
+				$('[type="checkbox"]', el).change();
+			}
 		});
 	}
 
