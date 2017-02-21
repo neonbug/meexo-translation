@@ -71,6 +71,8 @@
 			:
 			'Print,Preview,Save,Templates,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Language,BidiRtl,BidiLtr,About,Flash,NewPage';
 		
+		var file_browser_base_href = config.base_url + '/vendor/common/admin_assets/js/ckeditor/plugins/kcfinder/';
+		
 		$('.field-translation-text').each(function(idx, el) {
 			$('[type="checkbox"]', el).change(function() {
 				var textarea = $('textarea', el);
@@ -96,7 +98,13 @@
 							{ name: 'others', groups: [ 'others' ] },
 							{ name: 'about', groups: [ 'about' ] }
 						], 
-						removeButtons: remove_buttons
+						removeButtons: remove_buttons, 
+						filebrowserBrowseUrl: file_browser_base_href + 'browse.php?opener=ckeditor&type=files', 
+						filebrowserImageBrowseUrl: file_browser_base_href + 'browse.php?opener=ckeditor&type=images', 
+						filebrowserFlashBrowseUrl: file_browser_base_href + 'browse.php?opener=ckeditor&type=flash', 
+						filebrowserUploadUrl: file_browser_base_href + 'upload.php?opener=ckeditor&type=files', 
+						filebrowserImageUploadUrl: file_browser_base_href + 'upload.php?opener=ckeditor&type=images', 
+						filebrowserFlashUploadUrl: file_browser_base_href + 'upload.php?opener=ckeditor&type=flash'
 					});
 				}
 				else
