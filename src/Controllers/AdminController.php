@@ -246,7 +246,8 @@ class AdminController extends \Neonbug\Common\Http\Controllers\BaseAdminControll
 				$model_name, 
 				$fields, 
 				$allowed_lang_independent_fields, 
-				$allowed_lang_dependent_fields
+				$allowed_lang_dependent_fields, 
+				$item
 			);
 			Event::fire($event);
 			
