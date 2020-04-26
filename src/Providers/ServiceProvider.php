@@ -16,10 +16,9 @@ class ServiceProvider extends \Neonbug\Common\Providers\BaseServiceProvider {
 	/**
 	 * Define your route model bindings, pattern filters, etc.
 	 *
-	 * @param    \Illuminate\Routing\Router  $router
 	 * @return  void
 	 */
-	public function boot(Router $router)
+	public function boot()
 	{
 		//============
 		//== ASSETS ==
@@ -60,7 +59,7 @@ class ServiceProvider extends \Neonbug\Common\Providers\BaseServiceProvider {
 		$resource_repo = App::make('ResourceRepository');
 		
 		//admin
-		$router->group([ 'prefix' => $admin_locale . '/admin/' . static::PREFIX, 
+		Route::group([ 'prefix' => $admin_locale . '/admin/' . static::PREFIX, 
 			'middleware' => [ 'auth.admin', 'admin.menu' ], 'role' => static::ROLE, 
 			'menu.icon' => 'world', 'weight' => 6 ], function($router)
 		{
@@ -79,7 +78,7 @@ class ServiceProvider extends \Neonbug\Common\Providers\BaseServiceProvider {
 			]);
 		});
 
-		$router->group([ 'prefix' => $admin_locale . '/admin/' . static::PREFIX, 'middleware' => [ 'auth.admin' ], 
+		Route::group([ 'prefix' => $admin_locale . '/admin/' . static::PREFIX, 'middleware' => [ 'auth.admin' ], 
 			'role' => static::ROLE ], function($router)
 		{
 			$router->post('delete', [
@@ -88,7 +87,7 @@ class ServiceProvider extends \Neonbug\Common\Providers\BaseServiceProvider {
 			]);
 		});
 
-		parent::boot($router);
+		parent::boot();
 	}
 
 	/**
