@@ -161,7 +161,7 @@ class AdminController extends \Neonbug\Common\Http\Controllers\BaseAdminControll
 	}
 	
 	protected function adminEditPostHandle($is_preview, $item, $fields, $files, $id_user, $lang_independent_fields, 
-		$lang_dependent_fields, $route_prefix)
+		$lang_dependent_fields, $route_prefix, $route_postfix = 'edit')
 	{
 		$retval = $this->handleAdminAddEdit(
 			$fields, 
@@ -172,7 +172,7 @@ class AdminController extends \Neonbug\Common\Http\Controllers\BaseAdminControll
 			$route_prefix, 
 			$this->getModel(), 
 			$item, 
-			'edit'
+			$route_postfix
 		);
 		
 		Cache::forget($this->getPackageName() . '::item::' . $item->{$item->getKeyName()});
